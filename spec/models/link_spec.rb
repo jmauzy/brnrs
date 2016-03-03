@@ -25,11 +25,17 @@ describe Link do
     expect(link.redirect_limit).to eq(0)
   end
 
-
   it "has a redirect_count which initializes at 0" do
     link = generate_link
 
     expect(link.redirect_count).to eq(0)
+  end
+
+  it "has an expiration_time which defaults to 1 year from the time of creation" do
+    time = Time.now
+    link = generate_link
+
+    expect(link.expiration_time.to_i).to eq(time.next_year.round(0).to_i)
   end
 
 
@@ -43,5 +49,3 @@ describe Link do
   end
 
 end
-
-

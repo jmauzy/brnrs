@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160303015430) do
+ActiveRecord::Schema.define(version: 20160303023752) do
 
   create_table "links", force: :cascade do |t|
     t.string   "url"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20160303015430) do
     t.integer  "redirect_count",      default: 0
     t.integer  "redirect_limit",      default: 0
     t.boolean  "redirect_limit_flag", default: false
+    t.datetime "expiration_time"
   end
 
 end
