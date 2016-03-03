@@ -11,13 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301024237) do
+ActiveRecord::Schema.define(version: 20160303015430) do
 
   create_table "links", force: :cascade do |t|
     t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "url_hash"
+    t.integer  "redirect_count",      default: 0
+    t.integer  "redirect_limit",      default: 0
+    t.boolean  "redirect_limit_flag", default: false
   end
 
 end
