@@ -1,13 +1,10 @@
 require "rails_helper"
-require "support/link_helper"
 
 describe Link do
   before(:all) do
     @link = build(:link)
   end
 
-  include LinkHelper
-  
   it "requires a url to be valid" do
     expect(@link).to be_valid
 
@@ -42,7 +39,6 @@ describe Link do
 end
 
 describe "#is_active?" do
-  include LinkHelper
   it "returns true when link is active" do
     link = build(:link)
     

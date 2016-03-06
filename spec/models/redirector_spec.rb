@@ -1,5 +1,4 @@
 require "rails_helper"
-require "support/link_helper"
 
 describe "Redirector" do
   it "finds a record with a hash matching the first parameter" do
