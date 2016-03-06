@@ -17,53 +17,45 @@ describe "Redirector" do
 end
 
 describe "#process" do
-  include LinkHelper
 
   it "returns the url of a valid link" do
-    link = generate_valid_link
-    allow(Link).to receive(:find_by).and_return(link)
-
+    link = create(:link)
     redirector = Redirector.new(link.url_hash)
 
     expect(redirector.process).to eq(link.url)
   end
 
   it "returns nil for a nonexistant link" do
-    link = nil
-    allow(Link).to receive(:find_by).and_return(link)
-
     redirector = Redirector.new("missing link")
 
     expect(redirector.process).to eq(nil)
   end
 
   it "returns nil for an inactive link" do
-    link = generate_time_expired_link
-    allow(Link).to receive(:find_by).and_return(link)
-
+    link = create(:time_expired_link)
     redirector = Redirector.new(link.url_hash)
 
     expect(redirector.process).to eq(nil)
   end
 
   it "deletes an inactive link when called" do
-    link = generate_time_expired_link
-    allow(Link).to receive(:find_by).and_return(link)
-
+    link = create(:redirect_expired_link)
     redirector = Redirector.new(link.url_hash)
-    expect(redirector.link).to receive(:destroy)
-
+    
+    expect(Link.find_by(link.id)).to_not eq(nil)
+    
     redirector.process
+
+    expect(Link.find_by(link.id)).to eq(nil)
   end
 
   it "increments the redirect_count of a valid link" do
-    link = generate_valid_link
-    link.redirect_count = 1
-    allow(Link).to receive(:find_by).and_return(link)
+    link = create(:link)
 
     redirector = Redirector.new(link.url_hash)
-    expect(link).to receive(:increment!).with(:redirect_count)
     redirector.process
+
+    expect(Link.find_by(link.id).redirect_count).to eq(1)
 
   end
 
