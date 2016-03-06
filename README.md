@@ -4,6 +4,6 @@ Seclinks is a url shortener that creates self-destructing urls. Urls can be crea
 
 This project contains three main parts:
 
--Ruby on Rails backend for link generation logic and database management
--React.js frontend interface for link creation in browser
--External API with token authentication (as part of the RoR stack) for third-party access to link creation
+- Ruby on Rails backend for link generation logic and database management
+- React.js frontend interface for link creation in browser
+- External API with token authentication (as part of the RoR stack) for third-party access to link creation
