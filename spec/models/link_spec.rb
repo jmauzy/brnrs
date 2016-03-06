@@ -15,12 +15,7 @@ describe Link do
     expect(@link).to_not be_valid
   end
 
-  it "has a redirect_limit_flag which defaults to false" do
-    
-    expect(@link.redirect_limit_flag).to be false
-  end
-
-  it "has a redirect_limit which initializes to 0" do
+  it "has a redirect_limit which defaults to 0" do
 
     expect(@link.redirect_limit).to eq(0)
   end
