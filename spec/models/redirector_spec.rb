@@ -16,17 +16,55 @@ describe "Redirector" do
   end
 end
 
-
-describe "#target_url" do
+describe "#process" do
   include LinkHelper
-  it "finds a link by url_hash and returns the url" do
 
+  it "returns the url of a valid link" do
     link = generate_valid_link
-    url_hash = link.url_hash
-    allow(Link).to receive(:find_by).with(url_hash: url_hash).and_return(link)
+    allow(Link).to receive(:find_by).and_return(link)
 
-    redirector = Redirector.new(url_hash)
+    redirector = Redirector.new(link.url_hash)
 
-    expect(redirector.target_url).to eq(link.url)
+    expect(redirector.process).to eq(link.url)
   end
+
+  it "returns nil for a nonexistant link" do
+    link = nil
+    allow(Link).to receive(:find_by).and_return(link)
+
+    redirector = Redirector.new("missing link")
+
+    expect(redirector.process).to eq(nil)
+  end
+
+  it "returns nil for an inactive link" do
+    link = generate_time_expired_link
+    allow(Link).to receive(:find_by).and_return(link)
+
+    redirector = Redirector.new(link.url_hash)
+
+    expect(redirector.process).to eq(nil)
+  end
+
+  it "deletes an inactive link when called" do
+    link = generate_time_expired_link
+    allow(Link).to receive(:find_by).and_return(link)
+
+    redirector = Redirector.new(link.url_hash)
+    expect(redirector.link).to receive(:destroy)
+
+    redirector.process
+  end
+
+  it "increments the redirect_count of a valid link" do
+    link = generate_valid_link
+    link.redirect_count = 1
+    allow(Link).to receive(:find_by).and_return(link)
+
+    redirector = Redirector.new(link.url_hash)
+    expect(link).to receive(:increment!).with(:redirect_count)
+    redirector.process
+
+  end
+
 end

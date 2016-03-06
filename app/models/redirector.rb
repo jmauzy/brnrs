@@ -9,6 +9,17 @@ class Redirector
     return @link.url
   end
 
+  def process
+    return nil if link == nil
+    if @link.is_active?
+      @link.increment!(:redirect_count)
+      @link.url
+    else
+      @link.destroy
+      nil
+    end
+  end
+
   private
 
   def get_link(url_hash)
