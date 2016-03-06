@@ -1,11 +1,8 @@
 class Redirector
+  attr_reader :link
 
   def initialize(url_hash)
-    begin
-      @link = get_link(url_hash)
-    rescue ActiveRecord::RecordNotFound => e
-      raise e
-    end
+    @link = get_link(url_hash)
   end
 
   def target_url
@@ -15,7 +12,7 @@ class Redirector
   private
 
   def get_link(url_hash)
-      Link.find_by!(url_hash: url_hash)
+      Link.find_by(url_hash: url_hash)
   end
   
 end
