@@ -16,7 +16,7 @@ class Link < ActiveRecord::Base
     end
 
     def under_max_redirects?
-      max_redirects == 0 ? true : self.redirect_count < self.max_redirects
+      max_redirects == 0 ? true : self.redirects < self.max_redirects
     end
 
     def not_expired?

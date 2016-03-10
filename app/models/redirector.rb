@@ -12,7 +12,7 @@ class Redirector
   def process
     return nil if link == nil
     if @link.is_active?
-      @link.increment!(:redirect_count)
+      @link.increment!(:redirects)
       @link.url
     else
       @link.destroy

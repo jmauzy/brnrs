@@ -48,13 +48,13 @@ describe "#process" do
     expect(Link.find_by(link.id)).to eq(nil)
   end
 
-  it "increments the redirect_count of a valid link" do
+  it "increments the redirects of a valid link" do
     link = create(:link)
 
     redirector = Redirector.new(link.url_string)
     redirector.process
 
-    expect(Link.find_by(link.id).redirect_count).to eq(1)
+    expect(Link.find_by(link.id).redirects).to eq(1)
 
   end
 

@@ -17,9 +17,9 @@ describe Link do
     expect(@link.max_redirects).to eq(0)
   end
 
-  it "has a redirect_count which initializes at 0" do
+  it "has a redirects which initializes at 0" do
 
-    expect(@link.redirect_count).to eq(0)
+    expect(@link.redirects).to eq(0)
   end
 
   it "has an expiration which defaults to 1 year from the time of creation" do
@@ -45,7 +45,7 @@ describe "#is_active?" do
     expect(link.is_active?).to be true
   end
 
-  it "returns false when redirect_count reaches max_redirects" do
+  it "returns false when redirects reaches max_redirects" do
     link = build(:redirect_expired_link)
 
     expect(link.is_active?).to be false
