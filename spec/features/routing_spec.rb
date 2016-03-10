@@ -13,7 +13,7 @@ feature "User accesses site" do
 
     visit "/#{link.url_string}"
 
-    expect(page.current_url).to eq(link.url)
+    expect(page.current_url).to eq(link.target_url)
   end
 
   scenario "Invalid link" do

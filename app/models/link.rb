@@ -1,5 +1,5 @@
 class Link < ActiveRecord::Base
-  validates_presence_of :url
+  validates_presence_of :target_url
   after_initialize :generate_url_string, :set_default_expiration
     
   def is_active?

@@ -5,10 +5,10 @@ describe Link do
     @link = build(:link)
   end
 
-  it "requires a url to be valid" do
+  it "requires a target_url to be valid" do
     expect(@link).to be_valid
 
-    @link.url = nil
+    @link.target_url = nil
     expect(@link).to_not be_valid
   end
 

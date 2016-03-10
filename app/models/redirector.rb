@@ -6,14 +6,14 @@ class Redirector
   end
 
   def target_url
-    return @link.url
+    return @link.target_url
   end
 
   def process
     return nil if link == nil
     if @link.is_active?
       @link.increment!(:redirects)
-      @link.url
+      @link.target_url
     else
       @link.destroy
       nil

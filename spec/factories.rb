@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :link do
-    url "http://www.google.com/"
+    target_url "http://www.google.com/"
 
     factory :redirect_expired_link do
       redirects 1

@@ -17,11 +17,11 @@ end
 
 describe "#process" do
 
-  it "returns the url of a valid link" do
+  it "returns the target_url of a valid link" do
     link = create(:link)
     redirector = Redirector.new(link.url_string)
 
-    expect(redirector.process).to eq(link.url)
+    expect(redirector.process).to eq(link.target_url)
   end
 
   it "returns nil for a nonexistant link" do
