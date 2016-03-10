@@ -4,7 +4,7 @@ FactoryGirl.define do
 
     factory :redirect_expired_link do
       redirect_count 1
-      redirect_limit 1
+      max_redirects 1
     end
 
     factory :time_expired_link do

@@ -12,9 +12,9 @@ describe Link do
     expect(@link).to_not be_valid
   end
 
-  it "has a redirect_limit which defaults to 0" do
+  it "has a max_redirects which defaults to 0" do
 
-    expect(@link.redirect_limit).to eq(0)
+    expect(@link.max_redirects).to eq(0)
   end
 
   it "has a redirect_count which initializes at 0" do
@@ -45,7 +45,7 @@ describe "#is_active?" do
     expect(link.is_active?).to be true
   end
 
-  it "returns false when redirect_count reaches redirect_limit" do
+  it "returns false when redirect_count reaches max_redirects" do
     link = build(:redirect_expired_link)
 
     expect(link.is_active?).to be false

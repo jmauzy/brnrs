@@ -3,7 +3,7 @@ class Link < ActiveRecord::Base
   after_initialize :generate_url_string, :set_default_expiration
     
   def is_active?
-    return under_redirect_limit? && not_expired?
+    return under_max_redirects? && not_expired?
   end
 
   private
@@ -15,8 +15,8 @@ class Link < ActiveRecord::Base
       self.expiration ||= Time.now.next_year.round(0)
     end
 
-    def under_redirect_limit?
-      redirect_limit == 0 ? true : self.redirect_count < self.redirect_limit
+    def under_max_redirects?
+      max_redirects == 0 ? true : self.redirect_count < self.max_redirects
     end
 
     def not_expired?
