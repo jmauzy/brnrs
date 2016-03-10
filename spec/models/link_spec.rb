@@ -22,9 +22,9 @@ describe Link do
     expect(@link.redirect_count).to eq(0)
   end
 
-  it "has an expiration_time which defaults to 1 year from the time of creation" do
+  it "has an expiration which defaults to 1 year from the time of creation" do
 
-    expect(@link.expiration_time.to_i).to eq(Time.now.next_year.round(0).to_i)
+    expect(@link.expiration.to_i).to eq(Time.now.next_year.round(0).to_i)
   end
 
 
@@ -51,7 +51,7 @@ describe "#is_active?" do
     expect(link.is_active?).to be false
   end
 
-  it "returns false when expiration_time has passed" do
+  it "returns false when expiration has passed" do
     link = build(:time_expired_link)
 
     expect(link.is_active?).to be false

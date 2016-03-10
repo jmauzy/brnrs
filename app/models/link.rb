@@ -1,6 +1,6 @@
 class Link < ActiveRecord::Base
   validates_presence_of :url
-  after_initialize :generate_url_string, :set_default_expiration_time
+  after_initialize :generate_url_string, :set_default_expiration
     
   def is_active?
     return under_redirect_limit? && not_expired?
@@ -11,8 +11,8 @@ class Link < ActiveRecord::Base
       self.url_string = SecureRandom.base64(6).tr('+/=', 'N3w')
     end
 
-    def set_default_expiration_time
-      self.expiration_time ||= Time.now.next_year.round(0)
+    def set_default_expiration
+      self.expiration ||= Time.now.next_year.round(0)
     end
 
     def under_redirect_limit?
@@ -20,7 +20,7 @@ class Link < ActiveRecord::Base
     end
 
     def not_expired?
-      Time.now < self.expiration_time
+      Time.now < self.expiration
     end
   
 end
