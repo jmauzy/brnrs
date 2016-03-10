@@ -1,14 +1,14 @@
 class Link < ActiveRecord::Base
   validates_presence_of :url
-  after_initialize :generate_hash, :set_default_expiration_time
+  after_initialize :generate_url_string, :set_default_expiration_time
     
   def is_active?
     return under_redirect_limit? && not_expired?
   end
 
   private
-    def generate_hash
-      self.url_hash = SecureRandom.base64(6).tr('+/=', 'N3w')
+    def generate_url_string
+      self.url_string = SecureRandom.base64(6).tr('+/=', 'N3w')
     end
 
     def set_default_expiration_time

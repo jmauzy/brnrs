@@ -11,7 +11,7 @@ feature "User accesses site" do
   scenario "Valid link" do
     link = create(:link)
 
-    visit "/#{link.url_hash}"
+    visit "/#{link.url_string}"
 
     expect(page.current_url).to eq(link.url)
   end
@@ -19,9 +19,9 @@ feature "User accesses site" do
   scenario "Invalid link" do
     link = create(:time_expired_link)
 
-    visit "/#{link.url_hash}"
+    visit "/#{link.url_string}"
 
-    expect(page.current_path).to eq("/#{link.url_hash}")
+    expect(page.current_path).to eq("/#{link.url_string}")
     expect(page).to have_css 'h1', text: 'Missing'
   end
 

@@ -1,8 +1,8 @@
 class Redirector
   attr_reader :link
 
-  def initialize(url_hash)
-    @link = get_link(url_hash)
+  def initialize(url_string)
+    @link = get_link(url_string)
   end
 
   def target_url
@@ -22,8 +22,8 @@ class Redirector
 
   private
 
-  def get_link(url_hash)
-      Link.find_by(url_hash: url_hash)
+  def get_link(url_string)
+      Link.find_by(url_string: url_string)
   end
   
 end

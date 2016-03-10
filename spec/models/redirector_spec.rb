@@ -3,7 +3,7 @@ require "rails_helper"
 describe "Redirector" do
   it "finds a record with a hash matching the first parameter" do
 
-    expect(Link).to receive(:find_by).with(url_hash: "test")
+    expect(Link).to receive(:find_by).with(url_string: "test")
 
     Redirector.new("test")
   end
@@ -19,7 +19,7 @@ describe "#process" do
 
   it "returns the url of a valid link" do
     link = create(:link)
-    redirector = Redirector.new(link.url_hash)
+    redirector = Redirector.new(link.url_string)
 
     expect(redirector.process).to eq(link.url)
   end
@@ -32,14 +32,14 @@ describe "#process" do
 
   it "returns nil for an inactive link" do
     link = create(:time_expired_link)
-    redirector = Redirector.new(link.url_hash)
+    redirector = Redirector.new(link.url_string)
 
     expect(redirector.process).to eq(nil)
   end
 
   it "deletes an inactive link when called" do
     link = create(:redirect_expired_link)
-    redirector = Redirector.new(link.url_hash)
+    redirector = Redirector.new(link.url_string)
     
     expect(Link.find_by(link.id)).to_not eq(nil)
     
@@ -51,7 +51,7 @@ describe "#process" do
   it "increments the redirect_count of a valid link" do
     link = create(:link)
 
-    redirector = Redirector.new(link.url_hash)
+    redirector = Redirector.new(link.url_string)
     redirector.process
 
     expect(Link.find_by(link.id).redirect_count).to eq(1)
