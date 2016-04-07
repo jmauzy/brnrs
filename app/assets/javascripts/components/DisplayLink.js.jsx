@@ -5,7 +5,7 @@ var DisplayLink = React.createClass ({
       <div>
         {this.props.link}
         <br/>
-        <button onClick={this.props.resetApp}>Reset</button>
+        <button className="btn btn-warning" onClick={this.props.resetApp}>Reset</button>
       </div>
     );
   } 
