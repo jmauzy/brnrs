@@ -1,7 +1,7 @@
 var App = React.createClass({
   getInitialState: function() {
     return {
-      link: 'no link',
+      link: [],
       loading: false,
       submitted: false,
     }
@@ -9,7 +9,7 @@ var App = React.createClass({
 
   resetApp() {
     this.setState({
-      link: null,
+      link: {},
       submitted: false
     });
   },
@@ -20,14 +20,15 @@ var App = React.createClass({
       type: 'POST',
       data: { 
         link: {
-          target_url: link.target_url
+          target_url: link.target_url,
+          max_redirects: link.max_redirects,
         }
       },
       dataType: 'json',
-      success: function(data) {
+      success: function(result) {
         this.setState({
           submitted: true,
-          link: data.url_string
+          link: result
         });
       }.bind(this),
     })
