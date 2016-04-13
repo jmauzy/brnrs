@@ -7,7 +7,7 @@ class LinkController < ApplicationController
 
   private
     def link_params
-      params.require(:link).permit(:target_url)
+      params.require(:link).permit(:target_url, :max_redirects)
     end
 
 end

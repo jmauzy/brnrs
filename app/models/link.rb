@@ -1,7 +1,7 @@
 class Link < ActiveRecord::Base
   validates_presence_of :target_url
-  after_initialize :generate_url_string, :set_default_expiration
-  before_validation :add_url_protocol
+  before_create :generate_url_string, :set_default_expiration
+  before_save :add_url_protocol
     
   def is_active?
     return under_max_redirects? && not_expired?
@@ -17,7 +17,7 @@ class Link < ActiveRecord::Base
     end
 
     def under_max_redirects?
-      max_redirects == 0 ? true : self.redirects < self.max_redirects
+      max_redirects == 0 ? true : (self.redirects < self.max_redirects)
     end
 
     def not_expired?

@@ -51,6 +51,22 @@ describe "#is_active?" do
     expect(link.is_active?).to be false
   end
 
+  it "properly responds to incremental increase in redirects" do
+    link = build(:link)
+    link.max_redirects = 2
+    link.redirects = 0
+
+    expect(link.is_active?).to be true
+
+    link.redirects += 1
+
+    expect(link.is_active?).to be true
+
+    link.redirects += 1
+
+    expect(link.is_active?).to be false
+  end
+
   it "returns false when expiration has passed" do
     link = build(:time_expired_link)
 

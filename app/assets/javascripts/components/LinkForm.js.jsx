@@ -30,7 +30,7 @@ var LinkForm = React.createClass({
             id="max_redirects"
             className="form-control"
             ref="max_redirects"
-            value="0"
+            devaultValue="0"
             required
           />
         </fieldset>

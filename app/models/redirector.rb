@@ -5,10 +5,6 @@ class Redirector
     @link = get_link(url_string)
   end
 
-  def target_url
-    return @link.target_url
-  end
-
   def process
     return nil if link == nil
     if @link.is_active?
