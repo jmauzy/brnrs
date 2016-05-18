@@ -1,2 +1,0 @@
-      invoke  active_record
-      create    db/migrate/20160303013811_add_redirect_count_to_link.rb
