@@ -16,3 +16,5 @@
 !/log/.keep
 /tmp
 **/*.swp
+app/assets/javascripts/bundles
+node_modules

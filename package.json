@@ -1,0 +1,31 @@
+{
+  "name": "seclinks",
+  "version": "1.0.0",
+  "description": "Create anonymous, temporary URLS via web or API",
+  "main": "entry.js",
+  "devDependencies": {
+    "webpack": "~1.13",
+    "expose-loader": "~0.6.0",
+    "imports-loader": "~0.6.3",
+    "exports-loader": "~0.6.2",
+    "lodash": "~2.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmauzy/seclinks.git"
+  },
+  "author": "Jeremy Mauzy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmauzy/seclinks/issues"
+  },
+  "homepage": "https://github.com/jmauzy/seclinks#readme",
+  "dependencies": {
+    "babel": "^6.5.2",
+    "chunk-manifest-webpack-plugin": "0.0.1",
+    "react": "^15.0.2"
+  }
+}
