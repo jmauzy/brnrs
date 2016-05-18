@@ -18,6 +18,20 @@ config.resolve = {
   modulesDirectories: ['node_modules'],
 };
 
+config.module = {
+  loaders: [
+    {
+      test: /\.jsx?$/,
+      loader: 'babel',
+      exclude: /node_modules/ ,
+      query: {
+        presets: ['react']
+      }
+    },
+  ]
+}
+
 config.plugins = [
 
 ];
+

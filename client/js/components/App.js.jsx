@@ -1,4 +1,9 @@
-var App = React.createClass({
+import React from 'react';
+import ReactDOM from 'react-dom';
+import DisplayLink from './DisplayLink';
+import LinkForm from './LinkForm';
+
+module.exports = React.createClass({
   getInitialState: function() {
     return {
       link: [],
@@ -48,3 +53,4 @@ var App = React.createClass({
     )
   }
 });
+

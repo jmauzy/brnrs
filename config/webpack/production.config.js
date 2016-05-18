@@ -6,7 +6,7 @@ var path = require('path');
 var config = module.exports = require('./main.config.js');
 
 config.output = _.merge(config.output, {
-  path: path.join(config.context, 'public', 'assets'),
+  path: path.join(config.context,'..', '..', 'public', 'assets', 'bundles'),
   filename: '[name]-bundle-[chunkhash].js',
   chunkFilename: '[id]-bundle-[chunkhash].js',
 });
@@ -19,5 +19,4 @@ config.plugins.push(
   }),
   new webpack.optimize.UglifyJsPlugin(),
   new webpack.optimize.OccurenceOrderPlugin()
-                                          
 );

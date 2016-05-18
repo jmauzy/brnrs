@@ -16,5 +16,7 @@
 !/log/.keep
 /tmp
 **/*.swp
-app/assets/javascripts/bundles
+
+/app/assets/javascripts/bundles
+/public/assets/bundles
 node_modules

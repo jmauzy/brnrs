@@ -1,4 +1,6 @@
-var LinkForm = React.createClass({
+import React from 'react';
+
+module.exports = React.createClass({
 
   createLink(event) {
     event.preventDefault();
