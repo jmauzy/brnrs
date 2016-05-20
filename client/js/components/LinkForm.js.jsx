@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import DateTimeField from 'react-bootstrap-datetimepicker';
 
 var LinkForm = React.createClass({
@@ -8,7 +9,8 @@ var LinkForm = React.createClass({
     var link = { 
       target_url: this.refs.target_url.state.value,
       max_redirects: this.refs.max_redirects.state.value,
-      expiration: this.refs.expiration.state.value
+      //divide resulting unix timestamp to account for milliseconds
+      expiration: this.refs.expiration.state.value / 1000
     }
     this.props.addLink(link);
   },
@@ -18,7 +20,7 @@ var LinkForm = React.createClass({
       <form onSubmit={this.createLink}>
         <URLEntry ref="target_url"/>
         <RedirectsEntry ref="max_redirects" value="0"/>
-        <ExpirationEntry ref="expiration"/>
+        <ExpirationEntry ref="expiration" defaultExpiration={this.props.defaultExpiration}/>
         <FormSubmitButton />
       </form>
     );
@@ -89,7 +91,8 @@ var ExpirationEntry = React.createClass({
         <label for="expiration">Expiration date/time</label>
         <DateTimeField 
           onChange={this.handleChange}
-          defaultText={''}
+          defaultText={this.props.defaultExpiration}
+          required
         />
         <small className="text-muted">Expires in 1 year if blank</small>
       </fieldset>

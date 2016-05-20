@@ -13,7 +13,7 @@ class Link < ActiveRecord::Base
     end
 
     def set_default_expiration
-      self.expiration ||= Time.now.next_year.round(0)
+      self.expiration ||= Time.now.next_year.round(0).to_f
     end
 
     def under_max_redirects?
@@ -21,7 +21,7 @@ class Link < ActiveRecord::Base
     end
 
     def not_expired?
-      Time.now < self.expiration
+      Time.now.to_f < self.expiration
     end
 
     def add_url_protocol

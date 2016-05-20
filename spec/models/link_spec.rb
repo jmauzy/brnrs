@@ -24,7 +24,7 @@ describe Link do
 
   it "has an expiration which defaults to 1 year from the time of creation" do
 
-    expect(@link.expiration.to_i).to eq(Time.now.next_year.round(0).to_i)
+    expect(@link.expiration).to eq(Time.now.next_year.round(0).to_f)
   end
 
 

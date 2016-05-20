@@ -10,7 +10,7 @@ FactoryGirl.define do
     end
 
     factory :time_expired_link do
-      expiration Time.new(0)
+      expiration 1.day.ago.to_f
     end
     
   end
