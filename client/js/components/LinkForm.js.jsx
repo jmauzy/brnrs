@@ -18,8 +18,8 @@ var LinkForm = React.createClass({
   render: function() {
     return(
       <form onSubmit={this.createLink}>
-        <URLEntry ref="target_url"/>
-        <RedirectsEntry ref="max_redirects" value="0"/>
+        <URLEntry ref="target_url" urlPlaceholder={this.props.urlPlaceholder}/>
+        <RedirectsEntry ref="max_redirects" defaultRedirects={this.props.defaultRedirects}/>
         <ExpirationEntry ref="expiration" defaultExpiration={this.props.defaultExpiration}/>
         <FormSubmitButton />
       </form>
@@ -44,6 +44,7 @@ var URLEntry = React.createClass({
           className="form-control"
           ref="target_url" 
           required
+          placeholder={this.props.urlPlaceholder}
           onChange={this.handleChange}
         />
         <small className="text-muted">URL must be valid</small>
@@ -68,7 +69,7 @@ var RedirectsEntry = React.createClass({
           id="max_redirects"
           className="form-control"
           ref="max_redirects"
-          value={this.state.value}
+          value={this.props.defaultRedirects}
           required
           onChange={this.handleChange}
         />

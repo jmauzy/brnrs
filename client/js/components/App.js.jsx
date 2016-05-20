@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import DisplayLink from './DisplayLink';
 import LinkForm from './LinkForm';
 
-module.exports = React.createClass({
+var App = React.createClass({
   getInitialState: function() {
     return {
       link: [],
@@ -11,14 +11,12 @@ module.exports = React.createClass({
       submitted: false,
     }
   },
-
   resetApp() {
     this.setState({
       link: {},
       submitted: false
     });
   },
-
   addLink(link) {
     $.ajax({
       url: './links',
@@ -43,13 +41,20 @@ module.exports = React.createClass({
       },
     })
   },
-
   render: function() {
     var targetComponent;
+    var formProps = {
+
+    }
     if (this.state.submitted) {
       targetComponent = <DisplayLink link={this.state.link} resetApp={this.resetApp} />;
     } else {
-      targetComponent = <LinkForm addLink={this.addLink} />;
+      targetComponent = <LinkForm 
+        addLink={this.addLink}
+        urlPlaceholder={"http://www.google.com"}
+        defaultRedirects={0}
+        defaultExpiration={undefined}
+      />;
     }
     return (
       <div>
@@ -59,3 +64,4 @@ module.exports = React.createClass({
   }
 });
 
+module.exports = App;
