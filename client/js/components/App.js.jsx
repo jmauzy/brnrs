@@ -27,6 +27,7 @@ module.exports = React.createClass({
         link: {
           target_url: link.target_url,
           max_redirects: link.max_redirects,
+          expiration: link.expiration
         }
       },
       dataType: 'json',
@@ -36,6 +37,10 @@ module.exports = React.createClass({
           link: result
         });
       }.bind(this),
+      error: function(result) {
+        console.log(result)
+        console.log(link)
+      },
     })
   },
 
