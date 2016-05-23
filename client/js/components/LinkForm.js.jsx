@@ -55,7 +55,7 @@ var URLEntry = React.createClass({
 
 var RedirectsEntry = React.createClass({
   getInitialState: function() {
-    return({value: (this.props.value || '')})
+    return({value: (this.props.defaultRedirects || '')})
   },
   handleChange: function(event) {
     this.setState({value: event.target.value});
@@ -69,9 +69,9 @@ var RedirectsEntry = React.createClass({
           id="max_redirects"
           className="form-control"
           ref="max_redirects"
-          value={this.props.defaultRedirects}
           required
           onChange={this.handleChange}
+          value={this.state.value}
         />
         <small className="text-muted">Enter '0' for no limit</small>
       </fieldset>
@@ -91,6 +91,7 @@ var ExpirationEntry = React.createClass({
       <fieldset className="form-group">
         <label for="expiration">Expiration date/time</label>
         <DateTimeField 
+          minDate={moment()}
           onChange={this.handleChange}
           defaultText={this.props.defaultExpiration}
           required

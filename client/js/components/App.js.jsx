@@ -52,7 +52,7 @@ var App = React.createClass({
       targetComponent = <LinkForm 
         addLink={this.addLink}
         urlPlaceholder={"http://www.google.com"}
-        defaultRedirects={0}
+        defaultRedirects={10}
         defaultExpiration={undefined}
       />;
     }
