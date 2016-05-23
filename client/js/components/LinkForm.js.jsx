@@ -1,11 +1,25 @@
 import React from 'react';
+import Formsy from 'formsy-react';
 import moment from 'moment';
 import DateTimeField from 'react-bootstrap-datetimepicker';
 
 var LinkForm = React.createClass({
-
+  getInitialState() {
+    return {
+      canSubmit: false
+    }
+  },
+  enableButton() {
+    this.setState({
+      canSubmit: true
+    });
+  },
+  disableButton() {
+    this.setState({
+      canSubmit: false
+    });
+  },
   createLink(event) {
-    event.preventDefault();
     var link = { 
       target_url: this.refs.target_url.state.value,
       max_redirects: this.refs.max_redirects.state.value,
@@ -14,39 +28,63 @@ var LinkForm = React.createClass({
     }
     this.props.addLink(link);
   },
-
   render: function() {
     return(
-      <form onSubmit={this.createLink}>
-        <URLEntry ref="target_url" urlPlaceholder={this.props.urlPlaceholder}/>
-        <RedirectsEntry ref="max_redirects" defaultRedirects={this.props.defaultRedirects}/>
-        <ExpirationEntry ref="expiration" defaultExpiration={this.props.defaultExpiration}/>
-        <FormSubmitButton />
-      </form>
+      <Formsy.Form 
+        onValidSubmit={this.createLink} 
+        onValid={this.enableButton} 
+        onInvalid={this.disableButton}>
+        <URLEntry 
+          name="target_url" 
+          ref="target_url" 
+          urlPlaceholder={this.props.urlPlaceholder}
+          validations="isUrl"
+          validationError="Invalid URL"
+        />
+        <RedirectsEntry 
+          name="max_redirects"
+          ref="max_redirects" 
+          defaultRedirects={this.props.defaultRedirects}
+          validations="isNumeric"
+          validationError="Please enter a number 0-1000000"
+        />
+        <ExpirationEntry 
+          ref="expiration" 
+          defaultExpiration={this.props.defaultExpiration}
+        />
+        <FormSubmitButton disabled={!this.state.canSubmit}/>
+      </Formsy.Form>
     );
   } 
 });
 
 var URLEntry = React.createClass({
+  mixins: [Formsy.Mixin],
   getInitialState: function() {
     return {value: ''};
   },
   handleChange: function(event) {
     this.setState({value: event.target.value});
+    this.setValue(event.currentTarget.value);
   },
   render: function() {
+    var className = this.showRequired() ? 'required' : this.showError() ? 'error' : null;
+    var errorMessage = this.getErrorMessage();
     return(
-      <fieldset className="form-group">
+      <fieldset className="form-group ">
         <label for="target_url">Enter URL</label>
-        <input 
-          type="text"
-          id="target_url" 
-          className="form-control"
-          ref="target_url" 
-          required
-          placeholder={this.props.urlPlaceholder}
-          onChange={this.handleChange}
-        />
+        <div className={className}>
+          <input 
+            required
+            type="text"
+            id="target_url" 
+            className="form-control"
+            ref="target_url" 
+            placeholder={this.props.urlPlaceholder}
+            onChange={this.handleChange}
+          />
+          <span>{errorMessage}</span>
+        </div>
         <small className="text-muted">URL must be valid</small>
       </fieldset>
     )
@@ -54,25 +92,32 @@ var URLEntry = React.createClass({
 });
 
 var RedirectsEntry = React.createClass({
+  mixins: [Formsy.Mixin],
   getInitialState: function() {
-    return({value: (this.props.defaultRedirects || '')})
+    return({value: (this.props.defaultRedirects || 0)})
   },
   handleChange: function(event) {
-    this.setState({value: event.target.value});
+    this.setState({value: event.currentTarget.value});
+    this.setValue(event.currentTarget.value);
   },
   render: function() {
+    var className = this.showRequired() ? 'required' : this.showError() ? 'error' : null;
+    var errorMessage = this.getErrorMessage();
     return(
       <fieldset className="form-group">
         <label for="max_redirects">Maximum Redirects:</label>
-        <input
-          type="text"
-          id="max_redirects"
-          className="form-control"
-          ref="max_redirects"
-          required
-          onChange={this.handleChange}
-          value={this.state.value}
-        />
+        <div className={className}>
+          <input
+            type="text"
+            id="max_redirects"
+            className="form-control"
+            ref="max_redirects"
+            required
+            value={this.state.value}
+            onChange={this.handleChange}
+          />
+          <span>{errorMessage}</span>
+        </div>
         <small className="text-muted">Enter '0' for no limit</small>
       </fieldset>
     )
@@ -81,7 +126,10 @@ var RedirectsEntry = React.createClass({
 
 var ExpirationEntry = React.createClass({
   getInitialState: function() {
-    return({value: ''});
+    return({
+      inputValue: moment(this.props.defaultExpiration).format('MM/DD/YY hh:MM a') || '',
+      value: this.props.defaultExpiration
+    });
   },
   handleChange: function(newDate) {
     this.setState({value: newDate, inputValue: this.newDate})
@@ -93,7 +141,7 @@ var ExpirationEntry = React.createClass({
         <DateTimeField 
           minDate={moment()}
           onChange={this.handleChange}
-          defaultText={this.props.defaultExpiration}
+          defaultText={this.state.inputValue}
           required
         />
         <small className="text-muted">Expires in 1 year if blank</small>
@@ -105,7 +153,7 @@ var ExpirationEntry = React.createClass({
 var FormSubmitButton = React.createClass({
   render: function() {
     return(
-      <button className="btn btn-primary" type="submit">Submit</button>
+      <button className="btn btn-primary" type="submit" disabled={this.props.disabled}>Submit</button>
     )
   }
 });

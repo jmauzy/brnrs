@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import ReactDOM from 'react-dom';
 import DisplayLink from './DisplayLink';
 import LinkForm from './LinkForm';
@@ -53,7 +54,7 @@ var App = React.createClass({
         addLink={this.addLink}
         urlPlaceholder={"http://www.google.com"}
         defaultRedirects={10}
-        defaultExpiration={undefined}
+        defaultExpiration={moment().add(1, 'y').valueOf()}
       />;
     }
     return (

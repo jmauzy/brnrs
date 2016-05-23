@@ -5,7 +5,7 @@ var DisplayLink = React.createClass ({
 
   render: function() {
     var link = this.props.link
-    var formattedExpiration = moment(link.expiration*1000).format('MMMM do YYYY, hh:mm a')
+    var formattedExpiration = moment(link.expiration*1000).format('MMMM Do YYYY, hh:mm a')
     return (
       <div>
         <p>Your SecLink URL is localhost:3000/{link.url_string}</p>
