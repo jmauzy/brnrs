@@ -53,8 +53,8 @@ var App = React.createClass({
       targetComponent = <LinkForm 
         addLink={this.addLink}
         urlPlaceholder={"http://www.google.com"}
-        defaultRedirects={10}
-        defaultExpiration={moment().add(1, 'y').valueOf()}
+        redirectsPlaceholder={"100"}
+        expirationPlaceholder={moment().add(1, 'y').valueOf()}
       />;
     }
     return (

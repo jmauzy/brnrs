@@ -3,6 +3,7 @@ import Formsy from 'formsy-react';
 import moment from 'moment';
 import DateTimeField from 'react-bootstrap-datetimepicker';
 import 'react-bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css';
+import Validators from './helpers/validators.js';
 
 var LinkForm = React.createClass({
   getInitialState() {
@@ -39,18 +40,20 @@ var LinkForm = React.createClass({
           name="target_url" 
           ref="target_url" 
           urlPlaceholder={this.props.urlPlaceholder}
-          validations="isUrl"
+          validations={{matchRegexp: Validators.urlRegexp}}
           validationError="Invalid URL"
         />
         <RedirectsEntry 
           name="max_redirects"
           ref="max_redirects" 
-          defaultRedirects={this.props.defaultRedirects}
-          validations="isNumeric"
+          redirectsPlaceholder={this.props.redirectsPlaceholder}
+          validations="redirectsValidator:1000000"
           validationError="Please enter a number 0-1000000"
         />
         <ExpirationEntry 
           ref="expiration" 
+          validations="expirationValidator"
+          validationError="Please choose a valid date using the date picker"
           defaultExpiration={this.props.defaultExpiration}
         />
         <FormSubmitButton disabled={!this.state.canSubmit}/>
@@ -95,7 +98,10 @@ var URLEntry = React.createClass({
 var RedirectsEntry = React.createClass({
   mixins: [Formsy.Mixin],
   getInitialState: function() {
-    return({value: (this.props.defaultRedirects || 0)})
+    return {value: 0};
+  },
+  componentDidMount: function() {
+    this.setValue(this.state.value);
   },
   handleChange: function(event) {
     this.setState({value: event.currentTarget.value});
@@ -113,8 +119,8 @@ var RedirectsEntry = React.createClass({
             id="max_redirects"
             className="form-control"
             ref="max_redirects"
+            placeholder={this.props.redirectsPlaceholder}
             required
-            value={this.state.value}
             onChange={this.handleChange}
           />
           <span>{errorMessage}</span>
@@ -127,10 +133,7 @@ var RedirectsEntry = React.createClass({
 
 var ExpirationEntry = React.createClass({
   getInitialState: function() {
-    return({
-      inputValue: moment(this.props.defaultExpiration).format('MM/DD/YY hh:MM a') || '',
-      value: this.props.defaultExpiration
-    });
+    return({value: null});
   },
   handleChange: function(newDate) {
     this.setState({value: newDate, inputValue: this.newDate})
@@ -142,8 +145,7 @@ var ExpirationEntry = React.createClass({
         <DateTimeField 
           minDate={moment()}
           onChange={this.handleChange}
-          defaultText={this.state.inputValue}
-          required
+          defaultText=""
         />
         <small className="text-muted">Expires in 1 year if blank</small>
       </fieldset>
