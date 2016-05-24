@@ -1,6 +1,6 @@
 class Link < ActiveRecord::Base
   validates_presence_of :target_url
-  before_create :generate_url_string, :set_default_expiration
+  before_create :generate_url_string, :set_default_expiration, :set_default_redirects
   before_save :add_url_protocol
     
   def is_active?
@@ -13,7 +13,11 @@ class Link < ActiveRecord::Base
     end
 
     def set_default_expiration
-      self.expiration ||= Time.now.next_year.round(0).to_f
+      self.expiration && self.expiration != 0 ? return : self.expiration = Time.now.next_year.round(0).to_f
+    end
+
+    def set_default_redirects
+      self.max_redirects && self.max_redirects > 0 ? return : self.max_redirects = 0
     end
 
     def under_max_redirects?
@@ -25,9 +29,9 @@ class Link < ActiveRecord::Base
     end
 
     def add_url_protocol
-      unless self.target_url[/\Ahttp:\/\//] || self.target_url[/\Ahttps:\/\//]
+      unless self.target_url[/\Ahttp(s)?:\/\//]
         self.target_url = "http://#{self.target_url}"
       end
     end
-  
+
 end

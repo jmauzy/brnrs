@@ -17,6 +17,11 @@ describe Link do
     expect(@link.max_redirects).to eq(0)
   end
 
+  it "max_redirects revert to 0 if negative value is passed" do
+    @link = Link.create(target_url: "google.com", max_redirects: -100)
+    expect(@link.max_redirects).to eq(0)
+  end
+
   it "has a redirects which initializes at 0" do
 
     expect(@link.redirects).to eq(0)
