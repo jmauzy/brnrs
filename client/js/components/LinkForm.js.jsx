@@ -1,8 +1,8 @@
 import React from 'react';
 import Formsy from 'formsy-react';
 import moment from 'moment';
-import DateTimeField from 'react-bootstrap-datetimepicker';
-import 'react-bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css';
+import DateTimeField from 'react-bootstrap-datetimepicker-noicon';
+import 'react-bootstrap-datetimepicker-noicon/css/bootstrap-datetimepicker.min.css';
 import Validators from './helpers/validators.js';
 
 var LinkForm = React.createClass({
@@ -36,26 +36,32 @@ var LinkForm = React.createClass({
         onValidSubmit={this.createLink} 
         onValid={this.enableButton} 
         onInvalid={this.disableButton}>
-        <URLEntry 
-          name="target_url" 
-          ref="target_url" 
-          urlPlaceholder={this.props.urlPlaceholder}
-          validations={{matchRegexp: Validators.urlRegexp}}
-          validationError="Invalid URL"
-        />
-        <RedirectsEntry 
-          name="max_redirects"
-          ref="max_redirects" 
-          redirectsPlaceholder={this.props.redirectsPlaceholder}
-          validations="redirectsValidator:1000000"
-          validationError="Please enter a number 0-1000000"
-        />
-        <ExpirationEntry 
-          ref="expiration" 
-          validations="expirationValidator"
-          validationError="Please choose a valid date using the date picker"
-          defaultExpiration={this.props.defaultExpiration}
-        />
+        <div className="col-xs-12">
+          <URLEntry 
+            name="target_url" 
+            ref="target_url" 
+            urlPlaceholder={this.props.urlPlaceholder}
+            validations={{matchRegexp: Validators.urlRegexp}}
+            validationError="Invalid URL"
+          />
+        </div>
+        <div className="col-xs-12">
+          <RedirectsEntry 
+            name="max_redirects"
+            ref="max_redirects" 
+            redirectsPlaceholder={this.props.redirectsPlaceholder}
+            validations="redirectsValidator:1000000"
+            validationError="Please enter a number 0-1000000"
+          />
+        </div>
+        <div className="col-xs-12">
+          <ExpirationEntry 
+            ref="expiration" 
+            validations="expirationValidator"
+            validationError="Please choose a valid date using the date picker"
+            defaultExpiration={this.props.defaultExpiration}
+          />
+        </div>
         <FormSubmitButton disabled={!this.state.canSubmit}/>
       </Formsy.Form>
     );
