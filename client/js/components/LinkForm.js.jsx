@@ -2,6 +2,7 @@ import React from 'react';
 import Formsy from 'formsy-react';
 import moment from 'moment';
 import DateTimeField from 'react-bootstrap-datetimepicker';
+import 'react-bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css';
 
 var LinkForm = React.createClass({
   getInitialState() {

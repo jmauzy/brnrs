@@ -28,6 +28,10 @@ config.module = {
         presets: ['react']
       }
     },
+    {
+      test: /\.css$/,
+      loader: "style-loader!css-loader" 
+    }
   ]
 }
 
