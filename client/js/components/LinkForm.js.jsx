@@ -36,16 +36,13 @@ var LinkForm = React.createClass({
         onValidSubmit={this.createLink} 
         onValid={this.enableButton} 
         onInvalid={this.disableButton}>
-        <div className="col-xs-12">
-          <URLEntry 
-            name="target_url" 
-            ref="target_url" 
-            urlPlaceholder={this.props.urlPlaceholder}
-            validations={{matchRegexp: Validators.urlRegexp}}
-            validationError="Invalid URL"
-          />
-        </div>
-        <div className="col-xs-12">
+        <URLEntry 
+          name="target_url" 
+          ref="target_url" 
+          urlPlaceholder={this.props.urlPlaceholder}
+          validations={{matchRegexp: Validators.urlRegexp}}
+          validationError="Invalid URL"
+        />
           <RedirectsEntry 
             name="max_redirects"
             ref="max_redirects" 
@@ -53,15 +50,12 @@ var LinkForm = React.createClass({
             validations="redirectsValidator:1000000"
             validationError="Please enter a number 0-1000000"
           />
-        </div>
-        <div className="col-xs-12">
           <ExpirationEntry 
             ref="expiration" 
             validations="expirationValidator"
             validationError="Please choose a valid date using the date picker"
             defaultExpiration={this.props.defaultExpiration}
           />
-        </div>
         <FormSubmitButton disabled={!this.state.canSubmit}/>
       </Formsy.Form>
     );
@@ -148,11 +142,13 @@ var ExpirationEntry = React.createClass({
     return(
       <fieldset className="form-group">
         <label for="expiration">Expiration date/time</label>
-        <DateTimeField 
-          minDate={moment()}
-          onChange={this.handleChange}
-          defaultText=""
-        />
+        <div style={{position: 'relative'}}>
+          <DateTimeField 
+            minDate={moment()}
+            onChange={this.handleChange}
+            defaultText=""
+          />
+        </div>
         <small className="text-muted">Expires in 1 year if blank</small>
       </fieldset>
     )
