@@ -1,16 +1,23 @@
+//Color Scheme
 $primary:  #8E1F5E;
 $primary-light: #982C69;
 $primary-dark: #7E1651; 
-
 $secondary: #204973;
 $secondary-light: #275483;
 $secondary-dark: #193F66;
-
 $tertiary: #7AA524;
 $tertiary-light: #8DBC2E;
 $tertiary-dark: #6B931A;
 
+//Typefaces
 $primary-font: "Monsterrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+//Dimensions
+$footer-height: 55px;
+
+html, body {
+  height: 100%
+}
 
 body {
   font: $primary-font;
@@ -20,6 +27,15 @@ body {
 h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   font-weight: 300;
+}
+
+#site-wrap {
+  min-height: 100%;
+}
+
+#main {
+  overflow: auto;
+  padding-bottom: $footer-height;
 }
 
 
@@ -53,6 +69,7 @@ h1, h2, h3, h4, h5, h6 {
       box-shadow: inset 0 5px -10px  #000000;
     }
     button {
+      font-weight: 600;
       background-color: $tertiary-light;
       margin: auto;
     }
@@ -68,4 +85,12 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   .container {
   }
+}
+
+#footer {
+  position: relative;
+  margin-top: -($footer-height);
+  height: $footer-height;
+  clear: both;
+  background-color: $secondary-dark;
 }
