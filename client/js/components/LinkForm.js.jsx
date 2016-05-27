@@ -158,7 +158,7 @@ var ExpirationEntry = React.createClass({
 var FormSubmitButton = React.createClass({
   render: function() {
     return(
-      <button className="btn btn-primary" type="submit" disabled={this.props.disabled}>Submit</button>
+      <button className="btn btn-lg" type="submit" disabled={this.props.disabled}>Submit</button>
     )
   }
 });

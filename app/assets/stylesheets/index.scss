@@ -1,0 +1,71 @@
+$primary:  #8E1F5E;
+$primary-light: #982C69;
+$primary-dark: #7E1651; 
+
+$secondary: #204973;
+$secondary-light: #275483;
+$secondary-dark: #193F66;
+
+$tertiary: #7AA524;
+$tertiary-light: #8DBC2E;
+$tertiary-dark: #6B931A;
+
+$primary-font: "Monsterrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+body {
+  font: $primary-font;
+  color: black;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+
+#header {
+  padding-bottom: 40px;
+  background-color: $primary;
+  #app-nav {
+    top: 30px;
+    background-color: $primary-dark;
+    border: none;
+    border-radius: 0;
+    .navbar-brand {
+      color: white;
+    }
+  }
+  h1 {
+    color: white;
+    padding-top: 120px; 
+    text-align: center;
+  }
+  #app-container {
+    margin-top: 40px;
+    padding: 15px;
+    border: 1px solid $secondary-dark;
+    border-radius: 10px;
+    background-color: $secondary;
+    box-shadow: 3px 3px 2px #333333;
+    input {
+      border: none;
+      background-color: $secondary-dark;
+      box-shadow: inset 0 5px -10px  #000000;
+    }
+    button {
+      background-color: $tertiary-light;
+      margin: auto;
+    }
+  }
+}
+
+
+#highlights {
+  top: 40px;
+  padding-top: 25px;
+  color: black;
+  background-color: white;
+  text-align: center;
+  .container {
+  }
+}

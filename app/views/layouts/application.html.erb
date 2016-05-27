@@ -2,17 +2,65 @@
 <html>
 <head>
   <title>Seclinks</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <div class="container">
 
-    <%= yield %>
+  <section id="header">
+    <nav id="app-nav" class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class=navbar-header">
+          <a class="navbar-brand" href="/">
+              SecLinks
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <div class="header-text">
+            <h1>Anonymous, temporary urls in seconds</h1>
+          </div>
+        </div>
+        <div id="app-container" class="col-sm-6 col-xs-12">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  </div>
+  <section id="description">
+    <div class="container">
+      <h2>What is seclinks?</h2> 
+      <p>Seclinks makes it easy for anyone to create shortened URLs that delete themselves after a certain number of click-throughs or a certain amount of time. Expired links are removed from our database and resolve to a placeholder page on this site.</p>
+    </div>
+  </section>
 
+  <section id="highlights">
+    <div class="container">
+      <h3>How it works:</h3>
+      <div class="row">
+        <div class="col-sm-4 col-xs-12">
+          <h3>Create</h3>
+          <p>Create a new link by specifying the URL you want to direct to and it's expiration. Expiration can be a time, a number of click-throughs, or both.</p>
+        </div>
+
+        <div class="col-sm-4 col-xs-12">
+          <h3>Share</h3>
+          <p>Share your Seclink the way you would any other. The only difference is you control how long the link is good for.</p>
+        </div>
+
+        <div class="col-sm-4 col-xs-12">
+          <h3>Develop</h3>
+          <p>Use our API to integrage Seclinks into your own projects or to create links without using the website.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
