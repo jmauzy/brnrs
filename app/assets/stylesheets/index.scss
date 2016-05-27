@@ -13,7 +13,8 @@ $tertiary-dark: #6B931A;
 $primary-font: "Monsterrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 //Dimensions
-$footer-height: 55px;
+$section-spacing: 40px;
+$footer-height: 100px;
 
 html, body {
   height: 100%
@@ -29,6 +30,10 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
 }
 
+.container {
+  max-width: 955px;
+}
+
 #site-wrap {
   min-height: 100%;
 }
@@ -40,7 +45,6 @@ h1, h2, h3, h4, h5, h6 {
 
 
 #header {
-  padding-bottom: 40px;
   background-color: $primary;
   #app-nav {
     top: 30px;
@@ -54,43 +58,69 @@ h1, h2, h3, h4, h5, h6 {
   h1 {
     color: white;
     padding-top: 120px; 
-    text-align: center;
+    @media (max-width: 767px) {
+      padding-top: 40px;
+    }
   }
   #app-container {
-    margin-top: 40px;
+    margin: 40px 0 40px 0;
     padding: 15px;
     border: 1px solid $secondary-dark;
     border-radius: 10px;
-    background-color: $secondary;
+    background-color: $secondary-dark;
     box-shadow: 3px 3px 2px #333333;
+    letter-spacing: 2px;
     input {
       border: none;
-      background-color: $secondary-dark;
+      background-color: $secondary-light;
       box-shadow: inset 0 5px -10px  #000000;
     }
-    button {
-      font-weight: 600;
-      background-color: $tertiary-light;
-      margin: auto;
+    .button-container {
+      text-align: center;
+      button {
+        box-shadow: 1px 1px 0 0 $tertiary-dark;
+        border: 2px solid $tertiary-dark;
+        font-weight: 600;
+        background-color: $tertiary-light;
+        margin: auto;
+      }
+    }
+    @media (max-width: 767px) {
+      margin: 40px 0 0 0;
+      border-radius: 0;
+      box-shadow: none;
     }
   }
+}
+
+#description {
+  margin: $section-spacing 0 $section-spacing 0;
 }
 
 
 #highlights {
-  top: 40px;
-  padding-top: 25px;
+  margin: $section-spacing 0 $section-spacing 0;
   color: black;
   background-color: white;
   text-align: center;
-  .container {
+  h3 {
+    margin-bottom: 30px;
+  }
+  .feature-icon {
+    font-size: 75px;
+    color: $secondary;
   }
 }
 
 #footer {
+  padding-top: $footer-height*.4;
   position: relative;
+  text-align: center;
   margin-top: -($footer-height);
   height: $footer-height;
   clear: both;
-  background-color: $secondary-dark;
+  background-color: $secondary;
+  p {
+    color: white;
+  }
 }
