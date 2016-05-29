@@ -10,7 +10,7 @@ require "action_view/railtie"
 require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 
-module Seclinks
+module Brnrs
   class Application < Rails::Application
     config.active_record.raise_in_transactional_callbacks = true
 
