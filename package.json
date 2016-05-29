@@ -1,5 +1,5 @@
 {
-  "name": "seclinks",
+  "name": "brnrs",
   "version": "1.0.0",
   "description": "Create anonymous, temporary URLS via web or API",
   "main": "entry.js",
