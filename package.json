@@ -4,6 +4,9 @@
   "description": "Create anonymous, temporary URLS via web or API",
   "main": "entry.js",
   "devDependencies": {
+  },
+  "author": "Jeremy Mauzy",
+  "dependencies": {
     "babel-core": "^6.9.0",
     "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.3.13",
@@ -20,10 +23,7 @@
     "react-bootstrap-datetimepicker-noicon": "0.0.25",
     "react-dom": "^15.0.2",
     "style-loader": "^0.13.1",
-    "webpack": "~1.13"
-  },
-  "author": "Jeremy Mauzy",
-  "dependencies": {
+    "webpack": "~1.13",
     "babel": "^6.5.2",
     "chunk-manifest-webpack-plugin": "0.0.1",
     "react": "^15.0.2"
