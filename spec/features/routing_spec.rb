@@ -1,11 +1,10 @@
 require "rails_helper"
 
-feature "User accesses site" do
+feature "Smoke Test" do
   scenario "Homepage" do
     visit root_path
 
     expect(page).to have_http_status(200)
-    expect(page).to have_css 'h1', text: 'SecLinks'
   end
 
   scenario "Valid link" do

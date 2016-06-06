@@ -1,5 +1,5 @@
 class AddExpirationTimeToLinks < ActiveRecord::Migration
   def change
-    add_column :links, :expiration_time, :timestamp
+    add_column :links, :expiration_time, :integer
   end
 end

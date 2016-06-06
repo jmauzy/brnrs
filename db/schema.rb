@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20160520220743) do
     t.string   "url_string"
     t.integer  "redirects",                default: 0
     t.integer  "max_redirects",            default: 0
-    t.integer  "expiration",    limit: 10
+    t.integer  "expiration"
   end
 
 end
