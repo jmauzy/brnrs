@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "Create anonymous, temporary URLS via web or API",
   "main": "entry.js",
-  "devDependencies": {
+  "scripts": {
+    "clean": "rm -rf ./public/assets/bundle",
+    "deploy": "./scripts/deploy.sh",
+    "dev": "foreman start"
   },
-  "author": "Jeremy Mauzy",
-  "dependencies": {
+  "devDependencies": {
     "babel-core": "^6.9.0",
     "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.3.13",
@@ -27,5 +29,8 @@
     "babel": "^6.5.2",
     "chunk-manifest-webpack-plugin": "0.0.1",
     "react": "^15.0.2"
+  },
+  "author": "Jeremy Mauzy",
+  "dependencies": {
   }
 }

@@ -5,6 +5,6 @@
 !/log/.keep
 /tmp
 **/*.swp
-/app/assets/javascripts/bundles
-/public/assets/bundles
+/app/assets/javascripts/bundle
 node_modules
+**/.DS_Store
