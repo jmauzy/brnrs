@@ -9,6 +9,8 @@ $tertiary: #7AA524;
 $tertiary-light: #8DBC2E;
 $tertiary-dark: #6B931A;
 
+$placeholder-color: #444343;
+
 //Typefaces
 $primary-font: "Monsterrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -65,7 +67,6 @@ h1, h2, h3, h4, h5, h6 {
   #app-container {
     margin: 40px 0 40px 0;
     #app {
-      color: white;
       margin: auto;
       width: 75%;
       padding: 15px;
@@ -74,10 +75,26 @@ h1, h2, h3, h4, h5, h6 {
       background-color: $secondary;
       box-shadow: 3px 3px 2px #333333;
       letter-spacing: 2px;
+      label {
+        color: white
+      }
       input {
+        color: white;
         border: none;
         background-color: $secondary-dark;
         box-shadow: inset 0 5px -10px  #000000;
+      }
+      ::-webkit-input-placeholder {
+        color: $placeholder-color;
+      }
+      :-moz-placeholder { /* Firefox 18- */
+        color: $placeholder-color;  
+      }
+      ::-moz-placeholder {  /* Firefox 19+ */
+        color: $placeholder-color;  
+      }
+      :-ms-input-placeholder {  
+        color: $placeholder-color;  
       }
       .button-container {
         text-align: center;
@@ -89,8 +106,12 @@ h1, h2, h3, h4, h5, h6 {
           color: black;
         }
       }
+      .post-results {
+        color: white;
+      }
       @media (max-width: 767px) {
-        margin: 40px 0 0 0;
+        width: 100%;
+        margin: 25px 0 0 0;
         border-radius: 0;
         box-shadow: none;
       }

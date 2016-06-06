@@ -7,8 +7,9 @@ var DisplayLink = React.createClass ({
     var link = this.props.link
     var formattedExpiration = moment(link.expiration*1000).format('MMMM Do YYYY, hh:mm a')
     return (
-      <div>
-        <p>Your SecLink URL is localhost:3000/{link.url_string}</p>
+      <div className="post-results">
+        <p>Your brnr URL is: </p>
+        <h4>brnrs.io/{link.url_string}</h4>
         <p>This link redirects to {link.target_url}</p>
         <p>It will expire {formattedExpiration} (your local time)</p>
         <p>Or after {link.max_redirects} redirects</p>
