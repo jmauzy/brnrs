@@ -15,12 +15,12 @@ ActiveRecord::Schema.define(version: 20160520220743) do
 
   create_table "links", force: :cascade do |t|
     t.string   "target_url"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "url_string"
-    t.integer  "redirects",                default: 0
-    t.integer  "max_redirects",            default: 0
-    t.integer  "expiration"
+    t.integer  "redirects",     limit: 8, default: 0
+    t.integer  "max_redirects", limit: 8, default: 0
+    t.integer  "expiration",    limit: 8
   end
 
 end
