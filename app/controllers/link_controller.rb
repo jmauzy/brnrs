@@ -2,7 +2,7 @@ class LinkController < ApplicationController
   skip_before_action :verify_authenticity_token
   def create
     @link = Link.create(link_params)
-    render json: @link
+    render @link
   end
 
   private

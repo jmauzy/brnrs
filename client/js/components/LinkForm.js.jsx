@@ -80,7 +80,6 @@ var URLEntry = React.createClass({
         <div className={className}>
           <input 
             required
-            type="url"
             id="target_url" 
             className="form-control"
             ref="target_url" 

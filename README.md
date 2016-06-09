@@ -28,6 +28,18 @@ Sample payload:
 }
 ```
 
+Sample response:
+
+```json
+{
+  "link":{
+    "url":"brnrs.io/E2suYa",
+    "target_url":"http://www.google.com",
+    "max_redirects":15,
+    "expiration":1496844774
+  }
+}```
+
 
 ####Notes:
 `target_url` protocol (http(s)) will be added to urls that do not have one specified.

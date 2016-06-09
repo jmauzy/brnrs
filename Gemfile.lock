@@ -94,6 +94,9 @@ GEM
       multi_json (~> 1.8)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
+    jbuilder (2.4.0)
+      activesupport (>= 3.0.0, < 5.1)
+      multi_json (~> 1.2)
     json (1.8.3)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -226,6 +229,7 @@ DEPENDENCIES
   foreman
   guard
   guard-livereload
+  jbuilder
   pg
   puma
   rails (= 4.2.5.2)
