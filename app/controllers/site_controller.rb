@@ -7,4 +7,8 @@ class SiteController < ApplicationController
     target != nil ? redirect_to(target) : render("missing")
   end
 
+  def letsencrypt
+    render text: "4gwojkxxbefSMp1TVkDw2TeTwszidpaNH29Mp1yjRc0.kRBwrDEGLTNWlZMN-DSgpj9uen6s-VvaqgDt8AK3wuo"
+  end
+
 end
