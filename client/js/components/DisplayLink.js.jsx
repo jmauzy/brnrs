@@ -9,15 +9,17 @@ var DisplayLink = React.createClass ({
     return (
       <div className="post-results">
         <p>Your brnr URL is: </p>
-        <p>{link.url}</p>
+        <h4>{link.url}</h4>
         <p>This link redirects to {link.target_url}</p>
         <p>It will expire {formattedExpiration} (your local time)</p>
         <p>Or after {link.max_redirects} redirects</p>
-        <button 
-          className="btn btn-warning" 
-          onClick={this.props.resetApp}>
-          Reset
-        </button>
+        <div className="button-container">
+          <button 
+            className="btn btn-lg" 
+            onClick={this.props.resetApp}>
+            Reset
+          </button>
+        </div>
       </div>
     );
   } 

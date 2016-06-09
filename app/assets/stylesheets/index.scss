@@ -23,6 +23,7 @@ html, body {
 }
 
 body {
+  background-color: $primary;
   font: $primary-font;
   color: black;
 }
@@ -47,7 +48,6 @@ h1, h2, h3, h4, h5, h6 {
 
 
 #header {
-  background-color: $primary;
   #app-nav {
     top: 30px;
     background-color: $primary-dark;
@@ -108,6 +108,9 @@ h1, h2, h3, h4, h5, h6 {
       }
       .post-results {
         color: white;
+        h4 {
+          text-transform: none;
+        }
       }
       @media (max-width: 767px) {
         width: 100%;
@@ -119,13 +122,17 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+.landing-content {
+  background-color: white;
+}
+
 #description {
-  margin: $section-spacing 0 $section-spacing 0;
+  padding: $section-spacing 0 $section-spacing 0;
 }
 
 
 #highlights {
-  margin: $section-spacing 0 $section-spacing 0;
+  padding: $section-spacing 0 $section-spacing 0;
   text-align: center;
   h3 {
     margin-bottom: 30px;
@@ -146,5 +153,15 @@ h1, h2, h3, h4, h5, h6 {
   background-color: $secondary;
   p {
     color: white;
+  }
+}
+
+#invalid-link {
+  #header {
+    height: 100%;
+  }
+  button {
+    color: white;
+    background-color: $tertiary-light;
   }
 }

@@ -1,0 +1,12 @@
+<%= render 'header', content: 'main'%>
+
+<div class="landing-content">
+  <%= render 'description' %>
+  <hr>
+  <%= render 'highlights' %>
+</div>
+
+
+<%= webpack_manifest_script %>
+<%= webpack_bundle_tag 'common' %>
+<%= webpack_bundle_tag 'main' %>
