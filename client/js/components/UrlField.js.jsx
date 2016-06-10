@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 export default class URLField extends React.Component {
   constructor() {
     super();
@@ -9,14 +10,15 @@ export default class URLField extends React.Component {
   saveAndContinue(e) {
 
     e.preventDefault();
-    console.log('refs: '+this.refs.target_url.value);
 
-    let data = {
-      target_url: this.refs.target_url.value
+    if (this.refs.target_url.value) {
+      let data = {
+        target_url: this.refs.target_url.value
+      }
+
+      this.props.saveValues(data)
+      this.props.nextStep()
     }
-
-    this.props.saveValues(data)
-    this.props.nextStep()
   }
 
 
@@ -26,7 +28,6 @@ export default class URLField extends React.Component {
         <form onSubmit={this.saveAndContinue}>
           <div className="form-group">
             <input
-              required
               placeholder="Enter a valid URL to get started."
               className="form-control input-lg"
               ref="target_url"
