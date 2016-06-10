@@ -18,6 +18,10 @@ $primary-font: "Monsterrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $section-spacing: 40px;
 $footer-height: 100px;
 
+x* {
+  border: 1px solid black;
+}
+
 html, body {
   height: 100%
 }
@@ -47,7 +51,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+
 #header {
+  .brand {
+    padding-top: 75px;
+    text-align: center;
+    p {
+      font-size: 80px;
+      color: white;
+    }
+    .glyphicon {
+      font-size: 70px;
+      padding-right: 10px;
+    }
+  }
   #app-nav {
     top: 30px;
     background-color: $primary-dark;
@@ -57,71 +74,105 @@ h1, h2, h3, h4, h5, h6 {
       color: white;
     }
   }
-  h1 {
+  h2 {
+    text-align: center;
     color: white;
-    padding-top: 120px; 
-    @media (max-width: 767px) {
-      padding-top: 40px;
-    }
   }
-  #app-container {
-    margin: 40px 0 40px 0;
-    #app {
-      margin: auto;
-      width: 75%;
-      padding: 15px;
-      border: 1px solid $secondary-dark;
-      border-radius: 10px;
-      background-color: $secondary;
-      box-shadow: 3px 3px 2px #333333;
-      letter-spacing: 2px;
-      label {
-        color: white
+  @media (max-width: 450px) {
+    .brand {
+      p {
+        font-size: 18vw;
       }
-      input {
-        color: white;
-        border: none;
-        background-color: $secondary-dark;
-        box-shadow: inset 0 5px -10px  #000000;
+      .glyphicon {
+        font-size: 20vw;
       }
-      ::-webkit-input-placeholder {
-        color: $placeholder-color;
-      }
-      :-moz-placeholder { /* Firefox 18- */
-        color: $placeholder-color;  
-      }
-      ::-moz-placeholder {  /* Firefox 19+ */
-        color: $placeholder-color;  
-      }
-      :-ms-input-placeholder {  
-        color: $placeholder-color;  
-      }
-      .button-container {
-        text-align: center;
-        button {
-          box-shadow: 1px 1px 0 0 $tertiary-dark;
-          border: 2px solid $tertiary-dark;
-          font-weight: 600;
-          background-color: $tertiary-light;
-          color: black;
-        }
-      }
-      .post-results {
-        color: white;
-        h4 {
-          text-transform: none;
-        }
-      }
-      @media (max-width: 767px) {
-        width: 100%;
-        margin: 25px 0 0 0;
-        border-radius: 0;
-        box-shadow: none;
-      }
+    }
+    h2 {
+      font-size: 8vw;
     }
   }
 }
 
+#invalid-link {
+  #header {
+    height: 100%;
+  }
+  color: white;
+  text-align: center;
+  button {
+    color: white;
+    margin-top: 30px;
+    background-color: $primary;
+    border: 2px solid $primary-dark;
+  }
+  h1 {
+    margin-top: 65px;  
+  }
+}
+
+#submission-form-wrapper {
+  padding: 40px 25% 40px 25%;
+  min-height: 315px;
+  #link-submission-anchor {
+    ::-webkit-input-placeholder {
+         color: #555;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+       color: #555;  
+    }
+    ::-moz-placeholder {  /* Firefox 19+ */
+      color: #555;  
+    }
+    :-ms-input-placeholder {  
+       color: #555;  
+     }
+    p, h3, h4 {
+      color: white;
+    }
+    p {
+      font-size: 14pt;
+    }
+    label {
+      color: white;
+      font-size: 18px;
+    }
+    input {
+      margin: 25px 0 0 0;
+      border: none;
+    }
+    .button-wrap {
+      width: 100%;
+      display: inline-block;
+      overflow: auto;
+      white-space: nowrap;
+      margin-top: 20px;
+    }
+    .button-right {
+      float: right;
+    }
+    .button-left {
+      float: left;
+    }
+    button {
+      border: 2px solid $primary-dark;
+      background-color: $primary;
+      color: white;
+    }
+    .confirmation {
+    }
+    .results {
+      color: white;
+      h1 {
+        text-transform: none;
+        padding: 5px 0 10px 0;
+      }
+    }
+    
+  }
+    @media(max-width: 768px) {
+      padding: 25px 5%;
+    }
+}
 .landing-content {
   background-color: white;
 }
@@ -139,7 +190,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   .feature-icon {
     font-size: 75px;
-    color: $secondary;
+    color: $primary;
   }
 }
 
@@ -150,18 +201,9 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: -($footer-height);
   height: $footer-height;
   clear: both;
-  background-color: $secondary;
+  background-color: $primary;
   p {
     color: white;
   }
 }
 
-#invalid-link {
-  #header {
-    height: 100%;
-  }
-  button {
-    color: white;
-    background-color: $tertiary-light;
-  }
-}

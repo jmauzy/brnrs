@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
+import LinkSubmission from './components/LinkSubmission';
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(<LinkSubmission/>, document.getElementById('link-submission-anchor'));
