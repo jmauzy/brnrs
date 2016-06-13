@@ -13,7 +13,7 @@ config.output = _.merge(config.output, {
 
 config.plugins.push(
   new webpack.DefinePlugin({
-    'process-env': {
+    'process.env': {
       'NODE_ENV': JSON.stringify('production')
     }
   }),
