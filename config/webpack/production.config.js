@@ -12,11 +12,20 @@ config.output = _.merge(config.output, {
 });
 
 config.plugins.push(
+  new webpack.DefinePlugin({
+    'process-env': {
+      'NODE_ENV': JSON.stringify('production')
+    }
+  }),
   new webpack.optimize.CommonsChunkPlugin('common', 'common-[chunkhash].js'),
   new ChunkManifestPlugin({
     filename: 'webpack-common-manifest.json',
     manifestVariable: 'webpackBundleManifest',
   }),
-  new webpack.optimize.UglifyJsPlugin(),
+  new webpack.optimize.UglifyJsPlugin({
+    compress:{
+      warnings: false
+    }
+  }),
   new webpack.optimize.OccurenceOrderPlugin()
 );
