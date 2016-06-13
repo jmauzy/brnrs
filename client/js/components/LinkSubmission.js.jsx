@@ -24,9 +24,7 @@ export default class LinkSubmission extends React.Component {
   }
 
   saveValues(fields) {
-    console.log('fields: '+fields);
     fieldValues = Object.assign({}, fieldValues, fields);
-    console.log(fieldValues);
   }
 
   nextStep() {
@@ -38,31 +36,36 @@ export default class LinkSubmission extends React.Component {
   }
 
   submit() {
-    $.ajax({
-      url: './links',
-      type: 'POST',
-      data: { 
-        link: {
-          target_url: fieldValues.target_url,
-          max_redirects: fieldValues.max_redirects,
-          expiration: fieldValues.expiration
-        }
-      },
-      dataType: 'json',
-      success: function(result) {
+    const xhr = new XMLHttpRequest();
+    let data = JSON.stringify({ 
+      link: {
+        target_url: fieldValues.target_url,
+        max_redirects: fieldValues.max_redirects,
+        expiration: fieldValues.expiration
+      }
+    });
+
+    xhr.open('POST', encodeURI('./links'));
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onload = function() {
+      if (xhr.status === 200) {
         this.setState({
           step: 4,
-          link: result
+          link: JSON.parse(xhr.responseText)
         });
-      }.bind(this),
-      error: function(result) {
-        console.log(result)
-      },
-    })
+      }
+      else {
+        this.setState({
+          step: 1
+        });
+        alert('Something went wrong, please try again');
+      };
+    }.bind(this);
+
+    xhr.send(data);
   }
 
   resetSubmission() {
-    console.log('resetting');
     this.setState({
       step : 1,
       fieldValues: {
