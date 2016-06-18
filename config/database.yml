@@ -13,4 +13,10 @@ test:
 
 production:
   <<: *default
-  database: db/production.postgresql
+  host: localhost
+  adapter: postgresql
+  encoding: utf8
+  database: brnrs_production
+  pool: 5
+  username: <%= ENV['BRNRS_DATABASE_USER'] %>
+  password: <%= ENV['BRNRS_DATABASE_PASSWORD'] %>

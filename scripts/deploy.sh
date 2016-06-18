@@ -11,7 +11,7 @@
 (echo "$(tput setaf 4)########## PUSHING TO HEROKU ##########$(tput sgr 0)")
 (git add .)
 (git commit -m "DEPLOY COMMIT")
-(git push -f heroku deploy-branch:master)
+(git push -f production deploy-branch:master)
 (git checkout master)
 (echo "$(tput setaf 4)########## CLEANING UP DEPLOY BRANCH ##########$(tput sgr 0)")
 (git branch -D deploy-branch)
