@@ -1,4 +1,4 @@
-if Rails.env.production?
+if ENV['RAILS_ENV'] == "production"
   #Change to match your CPU core count
   workers 1
 
