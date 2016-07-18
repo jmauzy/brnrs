@@ -44,6 +44,8 @@ export default class ExpirationFields extends React.Component {
             <input
               required
               type="number"
+              min="0"
+              max="1000000"
               placeholder="Uses before deletion (0 = no limit)"
               className="form-control input-lg"
               id="max_redirects-input"

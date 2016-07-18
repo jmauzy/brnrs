@@ -28,6 +28,8 @@ export default class URLField extends React.Component {
         <form onSubmit={this.saveAndContinue}>
           <div className="form-group">
             <input
+              required
+              type="url"
               placeholder="Enter a valid URL to get started."
               className="form-control input-lg"
               ref="target_url"
