@@ -6,9 +6,10 @@ brnrs.io is a tool which aims to allow its users to generate shortened URLS with
 
 ##Usage
 
-There are two ways in which to interact with brnrs to generate a link:
+There are three ways in which to interact with brnrs to generate a link:
 
-* Web interface at www.brnrs.io
+* [Web interface at www.brnrs.io](https://brnrs.io)
+* [Chrome Extension](https://chrome.google.com/webstore/detail/brnrs-create-private-temp/pobinhjkpbnfdphmeopaclblbcgbdkoe)
 * JSON API
 
 ##API
