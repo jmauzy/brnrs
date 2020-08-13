@@ -22,7 +22,7 @@
     "expose-loader": "~0.6.0",
     "formsy-react": "^0.18.0",
     "imports-loader": "~0.6.3",
-    "lodash": "~2.4.1",
+    "lodash": "~4.17.20",
     "react": "^15.0.2",
     "react-bootstrap-datetimepicker-noicon": "0.0.25",
     "react-dom": "^15.0.2",
